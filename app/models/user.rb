@@ -9,8 +9,8 @@ class User < ApplicationRecord
   has_many :posts
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
-  has_many :friend_requests, foreign_key: :befriender_id, inverse_of: :befriender
-  has_many :friend_requests, foreign_key: :befriendee_id, inverse_of: :befriendee
-  has_many :befrienders, through: :friend_requests
-  has_many :befriendees, through: :friend_requests
+  has_many :sent_requests, class_name: 'FriendRequest', foreign_key: :befriender_id, inverse_of: :befriender
+  has_many :received_requests, class_name: 'FriendRequest', foreign_key: :befriendee_id, inverse_of: :befriendee
+  # has_many :befrienders, through: :friend_requests
+  # has_many :befriendees, through: :friend_requests
 end
