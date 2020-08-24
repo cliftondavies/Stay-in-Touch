@@ -7,6 +7,7 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+
   <body>
     <nav class="nav">
       <%= link_to 'Stay in touch', root_path %>
@@ -24,6 +25,7 @@
         <%= link_to 'Sign in', user_session_path %>
       <% end %>
     </nav>
+
     <% if notice.present? %>
       <div class="notice">
         <p> <%= notice %> </p>
@@ -34,8 +36,35 @@
         <p> <%= alert %> </p>
       </div>
     <% end %>
+
     <main class="main">
-      <%= yield %>
+      <% if signed_in? %>
+      <section class="friends">
+        <ul>
+          <% current_user.friends.each do |friend| %>
+          <li><%= friend.name %></li>
+          <% end %>
+        </ul>
+      </section>
+      <% end %>
+
+      <section class="view">
+        <%= yield %>
+      </section>
+
+      <% if signed_in? %>
+      <section class="pending">
+        <ul>
+          <% current_user.pending_invites.each do |request| %>
+          <li>
+            <span><%= request.befriender.name %></span>
+            <button><%= link_to "Accept", friend_request_path(request), method: :patch %></button>
+            <button><%= link_to "Decline", friend_request_path(request), method: :delete, data: {confirm: "Really decline the request?"} %></button>
+          </li>
+          <% end %>
+        </ul>
+      </section>
+      <% end %>
     </main>
   </body>
 </html>

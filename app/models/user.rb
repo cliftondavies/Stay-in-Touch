@@ -13,12 +13,12 @@ class User < ApplicationRecord
   has_many :received_requests, class_name: 'FriendRequest', foreign_key: :befriendee_id, inverse_of: :befriendee
   # has_many :befrienders, through: :friend_requests
   # has_many :befriendees, through: :friend_requests
-  def current_friends(user)
-    user.sent_requests.select(:befriendee_id).where(status: 'accepted') +
-    user.received_requests.select(:befriender_id).where(status: 'accepted')
+  def friends
+    self.sent_requests.select(:befriendee_id).where(status: 'accepted') +
+    self.received_requests.select(:befriender_id).where(status: 'accepted')
   end
 
-  def pending_friends
-    received_requests.select(:befriender_id).where(status: 'pending')
+  def pending_invites
+    received_requests.includes(:befriender_id).where(status: 'pending')
   end
 end

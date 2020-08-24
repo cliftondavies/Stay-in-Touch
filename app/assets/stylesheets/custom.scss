@@ -69,9 +69,23 @@ a {
 
 .main {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  // align-items: center;
   padding: 16px;
+}
+
+.view {
+  display: flex;
+  flex-direction: column;
+  // align-items: center;
+  margin: 0 auto;
+  width: 50%;
+}
+
+.friends,
+.pending {
+  width: 25%;
 }
 
 .notice,
@@ -278,6 +292,7 @@ form {
 .users-section {
   width: 100%;
   margin: 10px;
+  text-align: center;
 
   .users-list li {
     margin-bottom: 16px;
@@ -324,26 +339,26 @@ form {
 
 @media only screen and (min-width: 480px) {
   form {
-    width: 60%;
+    width: 100%;
   }
 
   .new_post,
   .timeline,
   .users-section,
   .user-section {
-    width: 70%;
+    width: 100;
   }
 }
 
 @media (min-width: 780px) {
   form {
-    width: 40%;
+    width: 100%;
   }
 
   .new_post,
   .timeline,
   .users-section,
   .user-section {
-    width: 50%;
+    width: 100%;
   }
 }
