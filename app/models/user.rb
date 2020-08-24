@@ -21,4 +21,8 @@ class User < ApplicationRecord
   def pending_invites
     received_requests.includes(:befriender_id).where(status: 'pending')
   end
+
+  def friend?(user)
+    friends.include(user)
+  end
 end
