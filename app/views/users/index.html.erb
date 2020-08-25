@@ -7,26 +7,8 @@
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
         </span>
 
-        <!--<%= form_with model: [user, @friend_request], local: true do |form| %>
-        <% if @friend_request.errors.any? %>
-          <div id="error_explanation">
-            <h2><%= pluralize(@friend_request.errors.count, "error") %> prohibited this event from being saved:</h2>
-
-            <ul>
-            <% @friend_request.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
-            <% end %>
-            </ul>
-          </div>
-        <% end %>
-
-        <div class="actions">
-          <%= form.submit "Invite to frienship" %>
-        </div>
-      <% end %>-->
-      <% unless user == current_user || current_user.friend?(user) %>
-      <button><%= link_to 'Invite to friendship', user_friend_requests_path(user), method: :post %></button>
-      <% end %>
+      <%= invite(user) %>
+      <%= accept_decline(user) %>
       </li>
     <% end %>
   </ul>
