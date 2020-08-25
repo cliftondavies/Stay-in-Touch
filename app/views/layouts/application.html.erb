@@ -40,9 +40,12 @@
     <main class="main">
       <% if signed_in? %>
       <section class="friends">
+        <h2>Your friends</h2>
+
         <ul>
-          <% current_user.friends.each do |friend| %>
-          <li><%= friend.name %></li>
+          <% current_user.confirmed_requests.each do |request| %>
+          <li><%= request.befriender.name unless current_user.name == request.befriender.name %></li>
+          <li><%= request.befriendee.name unless current_user.name == request.befriendee.name %></li>
           <% end %>
         </ul>
       </section>
@@ -54,6 +57,8 @@
 
       <% if signed_in? %>
       <section class="pending">
+        <h2>Your pending invites</h2>
+
         <ul>
           <% current_user.pending_invites.each do |request| %>
           <li>
