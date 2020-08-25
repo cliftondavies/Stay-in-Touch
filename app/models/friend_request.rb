@@ -4,6 +4,8 @@ class FriendRequest < ApplicationRecord
 
   validates :befriender, :befriendee, presence: true
 
+  scope :pending_invites, -> { includes(:befriender).where(status: 'pending') }
+
   def self.pending_request(user, current_user)
     find_by(befriender: user, befriendee: current_user)
   end
