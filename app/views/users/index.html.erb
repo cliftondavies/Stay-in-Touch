@@ -25,7 +25,7 @@
         </div>
       <% end %>-->
       <% unless user == current_user || current_user.friend?(user) %>
-      <button><%= link_to 'Invite to friendship', user_friend_requests_path(user_id: user.id), method: :post %></button>
+      <button><%= link_to 'Invite to friendship', user_friend_requests_path(user), method: :post %></button>
       <% end %>
       </li>
     <% end %>
