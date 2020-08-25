@@ -11,6 +11,7 @@
   <p class="post-content">
     <%= post.content %>
   </p>
+  <small>Likes: <%= total_likes(post) %></small>
 
   <div class='post-comments-section'>
     <% post.comments.each do |comment| %>
