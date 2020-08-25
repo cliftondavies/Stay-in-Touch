@@ -11,14 +11,14 @@
   <p class="post-content">
     <%= post.content %>
   </p>
+
   <small>Likes: <%= total_likes(post) %></small>
+  <small>Comments: <%= total_comments(post) %></small>
 
   <div class='post-comments-section'>
     <% post.comments.each do |comment| %>
       <div class="post-comments">
-        <p>
-          <b><%= comment.user.name %>:</b> <%= comment.content %>
-        </p>
+        <p><b><%= comment.user.name %>:</b> <%= comment.content %></p>
         <span> <%= comment.created_at.strftime("%Y/%m/%d") %> </span>
       </div>
     <% end %>

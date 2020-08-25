@@ -3,8 +3,7 @@ module PostsHelper
     Post.likes_count(post)
   end
 
-  # def total_comments
-
-  # end
-
+  def total_comments(post)
+    Post.comments_count(post)
+  end
 end

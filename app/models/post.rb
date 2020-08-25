@@ -12,4 +12,8 @@ class Post < ApplicationRecord
   def self.likes_count(post)
     left_outer_joins(:likes).where(likes: { post_id: post.id }).count
   end
+
+  def self.comments_count(post)
+    left_outer_joins(:comments).where(comments: { post_id: post.id }).count
+  end
 end
