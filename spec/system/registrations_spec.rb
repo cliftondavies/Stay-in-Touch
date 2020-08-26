@@ -9,7 +9,7 @@ RSpec.describe "Registrations", type: :system do
 
     context 'with sign up email available' do
       scenario 'creates a new user account' do
-        fill_in 'Name', with: 'testuserone'
+        fill_in 'Name', with: 'testuser'
         fill_in 'Email', with: 'testuser@email.com'
         fill_in 'Password', with: '789101112'
         fill_in 'Password confirmation', with: '789101112'
@@ -20,7 +20,7 @@ RSpec.describe "Registrations", type: :system do
 
     context 'with sign up email unavailable' do
       scenario 'does not create a new user account' do
-        fill_in 'Name', with: 'testuserone'
+        fill_in 'Name', with: 'testuser'
         fill_in 'Email', with: user.email
         fill_in 'Password', with: '789101112'
         fill_in 'Password confirmation', with: '789101112'
