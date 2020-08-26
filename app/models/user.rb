@@ -12,16 +12,10 @@ class User < ApplicationRecord
   has_many :sent_requests, class_name: 'FriendRequest', foreign_key: :befriender_id, inverse_of: :befriender
   has_many :received_requests, class_name: 'FriendRequest', foreign_key: :befriendee_id, inverse_of: :befriendee
 
-  # scope :pending_invites, -> { includes(:befriender).where(status: 'pending') }
-
   def confirmed_requests
     self.sent_requests.includes(:befriender, :befriendee).where(status: 'accepted') +
     self.received_requests.includes(:befriender, :befriendee).where(status: 'accepted')
   end
-
-  # def pending_invites
-  #   received_requests.includes(:befriender).where(status: 'pending')
-  # end
 
   def friend?(user)
     confirmed_requests.find { |request| request.befriender == user || request.befriendee == user } ||
