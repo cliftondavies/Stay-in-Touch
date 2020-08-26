@@ -69,15 +69,12 @@ a {
 
 .main {
   display: flex;
-  //flex-direction: row;
   justify-content: space-between;
-  // align-items: center;
   padding: 16px;
 
   .view {
     display: flex;
     flex-direction: column;
-    // align-items: center;
     margin: 0 auto;
     width: 50%;
   }
@@ -93,19 +90,6 @@ a {
     width: 25%;
   }
 }
-
-// .view {
-//   display: flex;
-//   flex-direction: column;
-//   // align-items: center;
-//   margin: 0 auto;
-//   width: 50%;
-// }
-
-// .friends,
-// .pending {
-//   width: 25%;
-// }
 
 .notice,
 .alert {
