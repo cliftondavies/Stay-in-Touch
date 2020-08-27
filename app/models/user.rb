@@ -13,17 +13,17 @@ class User < ApplicationRecord
   has_many :received_requests, class_name: 'FriendRequest', foreign_key: :befriendee_id, inverse_of: :befriendee
 
   def confirmed_requests
-    self.sent_requests.includes(:befriender, :befriendee).where(status: 'accepted') +
-    self.received_requests.includes(:befriender, :befriendee).where(status: 'accepted')
+    sent_requests.includes(:befriendee).where(status: 'accepted', befriender: self) +
+      received_requests.includes(:befriender).where(status: 'accepted', befriendee: self)
   end
 
   def friend?(user)
-    confirmed_requests.find { |request| request.befriender == user || request.befriendee == user } ||
-    self.sent_requests.find_by(befriendee: user, befriender: self, status: 'pending') ||
-    self.pending_invite?(user)
+    confirmed_requests.find { |request| [request.befriender, request.befriendee].include?(user) } ||
+      sent_requests.find_by(befriendee: user, befriender: self, status: 'pending') ||
+      pending_invite?(user)
   end
 
   def pending_invite?(user)
-    self.received_requests.pending_invites.find_by(befriender: user, befriendee: self)
+    received_requests.pending_invites.find_by(befriender: user, befriendee: self)
   end
 end

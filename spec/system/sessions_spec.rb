@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Sessions", type: :system do
+RSpec.describe 'Sessions', type: :system do
   before { driven_by(:rack_test) }
   let(:user) { create(:user) }
 

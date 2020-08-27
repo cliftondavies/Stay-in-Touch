@@ -7,7 +7,7 @@ class FriendRequestsController < ApplicationController
     if @friend_request.save
       redirect_back fallback_location: root_path, notice: 'Your friend request has been sent!'
     else
-      flash.now[:alert] = "Could not send request. Please try again"
+      flash.now[:alert] = 'Could not send request. Please try again'
       render 'users/index'
     end
   end

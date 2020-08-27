@@ -1,3 +1,4 @@
+# rubocop:disable Layout/LineLength
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
@@ -14,3 +15,5 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_length_of(:name).is_at_most(20) }
   end
 end
+
+# rubocop:enable Layout/LineLength
