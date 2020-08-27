@@ -15,4 +15,12 @@ module ApplicationHelper
       link_to('Like!', post_likes_path(post_id: post.id), method: :post)
     end
   end
+
+  def pending_section_default
+    '<p>You do not have any pending invites</p>'.html_safe unless current_user.received_requests.pending_invites.any?
+  end
+
+  def friends_section_default
+    '<p>Time to make some new friends!</p>'.html_safe unless current_user.confirmed_requests.any?
+  end
 end
