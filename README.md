@@ -1,46 +1,94 @@
 # Stay in Touch
 
-> This repo includes intial code for a social media app, with basic styling. Its purpose is to be a starting point.
+> This repo includes initial code for a social media app, with basic styling. Its purpose is to be a starting point.
 
-## Built With
+## :toolbox: Tools & Technologies Used
 
+### Built with
+
+- HTML5
+- CSS3
 - Ruby v2.6.5
 - Ruby on Rails v5.2.4
 
-## Live Demo
+### Tested with
+
+- RSpec Rails v4.0.1
+- Capybara v2.15
+- Factory Bot Rails v6.1
+- Shoulda Matchers v4.3
+- Faker v2.13
+
+## :tv: Live Demo
 
 TBA
 
-## Getting Started
+## :rocket: Getting Started
 
 To get a local copy up and running follow these simple example steps.
 
 ### Prerequisites
 
-Ruby: 2.6.5
+[Ruby](https://www.ruby-lang.org/en/documentation/installation/): 2.6.5
+
 Rails: 5.2.3
-Postgres: >=9.5
+
+```ruby
+gem install rails -v 5.2.3
+```
+
+[PostgreSQL](https://www.postgresql.org/download/): >=9.5
 
 ### Setup
 
-Instal gems with:
+Clone repo into your local environment using your favorite terminal:
 
+Clone with SSH
+
+```git
+git clone git@github.com:cliftondavies/Stay-in-Touch.git
 ```
+
+Clone with HTTPS
+
+```git
+git clone https://github.com/cliftondavies/Stay-in-Touch.git
+```
+
+Open project directory
+
+```bash
+cd [your-directory-name]
+```
+
+Install gems:
+
+```ruby
 bundle install
 ```
 
-Setup database with:
+Setup database:
 
-```
+```ruby
    rails db:create
    rails db:migrate
 ```
 
 ### Usage
 
-Start server with:
+#### In console
 
+Start console:
+
+```ruby
+    rails console
 ```
+
+#### In Browser
+
+Start server:
+
+```ruby
     rails server
 ```
 
@@ -48,11 +96,9 @@ Open `http://localhost:3000/` in your browser.
 
 ### Run tests
 
+```ruby
+    bundle exec rspec
 ```
-    rpsec --format documentation
-```
-
-> There are no tests for initial features in order to make sure that you write all tests from scratch.
 
 ### Deployment
 
@@ -64,7 +110,7 @@ TBA
 
 - Github: [@githubhandle](https://github.com/cliftondavies)
 - Twitter: [@twitterhandle](https://twitter.com/cliftonaedavies)
-- Linkedin: [linkedin](https://www.linkedin.com/in/clifton-davies-mbcs/)
+- LinkedIn: [linkedin](https://www.linkedin.com/in/clifton-davies-mbcs/)
 
 ## 🤝 Contributing
 
