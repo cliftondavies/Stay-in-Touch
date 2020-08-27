@@ -44,8 +44,8 @@
         <%= friends_section_default %>
         <ul>
           <% current_user.confirmed_requests.each do |request| %>
-          <li><%= request.befriender.name unless current_user.name == request.befriender.name %></li>
-          <li><%= request.befriendee.name unless current_user.name == request.befriendee.name %></li>
+          <li><%= request.befriender.name unless current_user == request.befriender %></li>
+          <li><%= request.befriendee.name unless current_user == request.befriendee %></li>
           <% end %>
         </ul>
       </section>
