@@ -9,4 +9,12 @@ class FriendRequest < ApplicationRecord
   def self.pending_request(user, current_user)
     find_by(befriender: user, befriendee: current_user)
   end
+
+  def self.sent(current_user)
+    where(status: 'accepted', befriender: current_user)
+  end
+
+  def self.received(current_user)
+    where(status: 'accepted', befriendee: current_user)
+  end
 end
