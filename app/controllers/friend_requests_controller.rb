@@ -16,6 +16,8 @@ class FriendRequestsController < ApplicationController
     @friend_request = FriendRequest.find(params[:id])
     @friend_request.status = 'accepted'
     if @friend_request.save
+      current_user.friends << @friend_request.befriender
+      @friend_request.befriender.friends << current_user
       redirect_back fallback_location: root_path, notice: "You are now friends with #{@friend_request.befriender.name}!"
     else
       flash.now[:alert] = 'Could not accept request. Please try again'

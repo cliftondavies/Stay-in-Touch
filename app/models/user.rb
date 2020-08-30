@@ -11,9 +11,8 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :sent_requests, class_name: 'FriendRequest', foreign_key: :befriender_id, inverse_of: :befriender
   has_many :received_requests, class_name: 'FriendRequest', foreign_key: :befriendee_id, inverse_of: :befriendee
-  has_many :befriendees, -> { (FriendRequest.sent(User.first)) }, through: :sent_requests
-  has_many :befrienders, -> { (FriendRequest.received(User.first)) }, through: :received_requests
-  # has_and_belongs_to_many :users, foreign_key: :friend_id, join_table: 'users'
+  has_many :befriendees, -> { merge(FriendRequest.sent(User.first)) }, through: :sent_requests
+  has_many :befrienders, -> { merge(FriendRequest.received(User.first)) }, through: :received_requests
   has_and_belongs_to_many :friends, class_name: 'User', join_table: 'friends_users', foreign_key: :user_id, association_foreign_key: :friend_id
 
   # def self.friends(current_user) # can be moved to view helper
