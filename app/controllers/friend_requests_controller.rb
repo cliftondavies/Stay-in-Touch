@@ -15,12 +15,12 @@ class FriendRequestsController < ApplicationController
   def update
     @friend_request = FriendRequest.find(params[:id])
     @friend_request.status = 'accepted'
-    if @friend_request.save
-      current_user.friends << @friend_request.befriender
-      @friend_request.befriender.friends << current_user
+    @inverse_friend_request = current_user.sent_requests.build(befriendee: @friend_request.befriender)
+    @inverse_friend_request.status = 'accepted'
+    if @friend_request.save && @inverse_friend_request.save
       redirect_back fallback_location: root_path, notice: "You are now friends with #{@friend_request.befriender.name}!"
     else
-      flash.now[:alert] = 'Could not accept request. Please try again'
+      flash.now[:alert] = 'Could not confirm friendship. Please try again'
       render 'posts/index'
     end
   end
