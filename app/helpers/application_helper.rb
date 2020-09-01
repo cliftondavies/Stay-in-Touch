@@ -17,7 +17,7 @@ module ApplicationHelper
   end
 
   def pending_section_default
-    '<p>You do not have any pending invites</p>'.html_safe unless current_user.received_requests.pending_invites.any?
+    '<p>You do not have any pending invites</p>'.html_safe unless current_user.pending_requests.any?
   end
 
   def friends_section_default
