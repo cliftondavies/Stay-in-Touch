@@ -3,7 +3,6 @@ class FriendRequestsController < ApplicationController
 
   def create
     @friend_request = current_user.sent_requests.build(befriendee_id: params[:user_id])
-    @friend_request.status = 'pending'
     if @friend_request.save
       redirect_back fallback_location: root_path, notice: 'Your friend request has been sent!'
     else
@@ -14,11 +13,10 @@ class FriendRequestsController < ApplicationController
 
   def update
     @friend_request = FriendRequest.find(params[:id])
-    @friend_request.status = 'accepted'
     if @friend_request.save
       redirect_back fallback_location: root_path, notice: "You are now friends with #{@friend_request.befriender.name}!"
     else
-      flash.now[:alert] = 'Could not accept request. Please try again'
+      flash.now[:alert] = 'Could not confirm friendship. Please try again'
       render 'posts/index'
     end
   end

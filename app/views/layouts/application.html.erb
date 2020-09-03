@@ -43,9 +43,8 @@
         <h2>Your friends</h2>
         <%= friends_section_default %>
         <ul>
-          <% current_user.confirmed_requests.each do |request| %>
-          <li><%= request.befriender.name unless current_user == request.befriender %></li>
-          <li><%= request.befriendee.name unless current_user == request.befriendee %></li>
+          <% current_user.confirmed_friends.each do |friend| %>
+          <li><%= friend.name %></li>
           <% end %>
         </ul>
       </section>
@@ -60,11 +59,11 @@
         <h2>Your pending invites</h2>
         <%= pending_section_default %>
         <ul>
-          <% current_user.received_requests.pending_invites.each do |request| %>
+          <% current_user.pending_requests.each do |request| %>
           <li>
             <span><%= request.befriender.name %></span>
             <button><%= link_to "Accept", friend_request_path(request), method: :patch %></button>
-            <button><%= link_to "Decline", friend_request_path(request), method: :delete, data: {confirm: "Really decline the request?"} %></button>
+            <button><%= link_to "Decline", friend_request_path(request), method: :delete %></button>
           </li>
           <% end %>
         </ul>
