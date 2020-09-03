@@ -63,7 +63,7 @@
           <li>
             <span><%= request.befriender.name %></span>
             <button><%= link_to "Accept", friend_request_path(request), method: :patch %></button>
-            <button><%= link_to "Decline", friend_request_path(request), method: :delete, data: {confirm: "Really decline the request?"} %></button>
+            <button><%= link_to "Decline", friend_request_path(request), method: :delete %></button>
           </li>
           <% end %>
         </ul>
