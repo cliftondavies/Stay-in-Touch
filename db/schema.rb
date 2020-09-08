@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_04_165841) do
+ActiveRecord::Schema.define(version: 2020_09_01_131610) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,16 @@ ActiveRecord::Schema.define(version: 2020_02_04_165841) do
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "friend_requests", force: :cascade do |t|
+    t.integer "befriender_id"
+    t.integer "befriendee_id"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["befriendee_id"], name: "index_friend_requests_on_befriendee_id"
+    t.index ["befriender_id"], name: "index_friend_requests_on_befriender_id"
   end
 
   create_table "likes", force: :cascade do |t|
@@ -54,4 +64,6 @@ ActiveRecord::Schema.define(version: 2020_02_04_165841) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "friend_requests", "users", column: "befriendee_id"
+  add_foreign_key "friend_requests", "users", column: "befriender_id"
 end

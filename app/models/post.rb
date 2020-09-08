@@ -5,6 +5,15 @@ class Post < ApplicationRecord
   belongs_to :user
 
   scope :ordered_by_most_recent, -> { order(created_at: :desc) }
+
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+
+  def self.likes_count(post)
+    left_outer_joins(:likes).where(likes: { post_id: post.id }).count
+  end
+
+  def self.comments_count(post)
+    left_outer_joins(:comments).where(comments: { post_id: post.id }).count
+  end
 end

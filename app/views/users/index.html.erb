@@ -1,4 +1,6 @@
 <section class="users-section">
+  <h2>All Users</h2>
+
   <ul class="users-list">
     <% @users.each do |user| %>
       <li>
@@ -6,6 +8,9 @@
         <span class="profile-link">
           <%= link_to 'See Profile',  user_path(user), class: 'profile-link' %>
         </span>
+
+      <%= invite(user) %>
+      <%= accept_decline(user) %>
       </li>
     <% end %>
   </ul>
