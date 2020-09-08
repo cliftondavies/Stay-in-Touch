@@ -21,7 +21,7 @@
 
 ## :tv: Live Demo
 
-TBA
+[Link to the app on Heroku](https://limitless-chamber-95862.herokuapp.com/users/sign_in)
 
 ## :rocket: Getting Started
 
@@ -41,7 +41,7 @@ gem install rails -v 5.2.3
 
 ### Setup
 
-Clone repo into your local environment using your favorite terminal:
+Clone repo into your local environment using your favourite terminal:
 
 Clone with SSH
 
@@ -67,11 +67,11 @@ Install gems:
 bundle install
 ```
 
-Setup database:
+Set up database:
 
 ```ruby
-   rails db:create
-   rails db:migrate
+rails db:create
+rails db:migrate
 ```
 
 ### Usage
@@ -81,7 +81,7 @@ Setup database:
 Start console:
 
 ```ruby
-    rails console
+rails console
 ```
 
 #### In Browser
@@ -89,7 +89,7 @@ Start console:
 Start server:
 
 ```ruby
-    rails server
+rails server
 ```
 
 Open `http://localhost:3000/` in your browser.
@@ -97,7 +97,7 @@ Open `http://localhost:3000/` in your browser.
 ### Run tests
 
 ```ruby
-    bundle exec rspec
+bundle exec rspec
 ```
 
 ### Deployment
